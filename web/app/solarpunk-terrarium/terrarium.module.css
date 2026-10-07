@@ -1,0 +1,371 @@
+/* The look of the original Sunhollow page. It is always a night scene,
+   whatever colour scheme the rest of the site follows. */
+
+.root {
+  --night: #0a1218;
+  --panel2: #132631;
+  --line: #24444f;
+  --cream: #eee2c6;
+  --dim: #8ea6a1;
+  --sun: #f2c14e;
+  --moss: #5fae63;
+  --cyan: #6be3d9;
+  --magenta: #e37bb6;
+
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 max(10px, calc(50% - 270px)) 30px;
+  background: #070d12;
+  color: var(--cream);
+  font-size: 15px;
+}
+
+.root * {
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 14px;
+  padding: 10px 4px 6px;
+  border-bottom: 3px solid var(--line);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: 1px;
+  color: var(--sun);
+  font-weight: 600;
+}
+
+.clock {
+  color: var(--dim);
+}
+
+.stocks {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  font-size: 14px;
+  flex-wrap: wrap;
+}
+
+.stock {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.stock i {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+}
+
+.music {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.music input[type="range"] {
+  width: 64px;
+}
+
+.music button {
+  padding: 3px 8px;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+}
+
+.world {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  border: 3px solid var(--line);
+  box-shadow: 6px 6px 0 #071015;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.world:global(.drag) {
+  cursor: grabbing;
+}
+
+.zoomer {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.zoomer button {
+  width: 32px;
+  height: 30px;
+  padding: 0;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.zoomLevel {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  background: rgba(14, 26, 34, 0.8);
+  border: 2px solid var(--line);
+  padding: 2px 7px;
+  font-size: 13px;
+  color: var(--dim);
+}
+
+.notice {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  background: rgba(14, 26, 34, 0.92);
+  border: 2px solid var(--sun);
+  padding: 8px 10px;
+  font-size: 14px;
+}
+
+.log {
+  font-size: 13px;
+  color: var(--dim);
+  line-height: 1.25;
+  min-height: 50px;
+  padding: 0 4px;
+}
+
+.log div:last-child {
+  color: var(--cream);
+}
+
+.box {
+  background: var(--panel2);
+  border: 2px solid var(--line);
+  padding: 10px;
+  box-shadow: 4px 4px 0 #0a161c;
+}
+
+.box h2 {
+  margin: 0 0 6px;
+  font-size: 15px;
+  color: var(--sun);
+  font-weight: 600;
+}
+
+.hint {
+  color: var(--dim);
+  font-size: 13px;
+  margin-top: 6px;
+  min-height: 18px;
+}
+
+.hint b {
+  font-weight: inherit;
+}
+
+.almanac {
+  color: var(--dim);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.almanac span {
+  color: var(--sun);
+}
+
+.follow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.thought {
+  grid-column: 1 / 3;
+  min-height: 20px;
+}
+
+.thought::before {
+  content: "“";
+}
+
+.thought::after {
+  content: "”";
+}
+
+.doing {
+  grid-column: 1 / 3;
+  margin-top: 0;
+}
+
+.tenderName {
+  font-size: 18px;
+  color: var(--magenta);
+}
+
+.about {
+  color: var(--dim);
+  font-weight: 400;
+}
+
+.traits {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 3px 8px;
+  font-size: 13px;
+  color: var(--dim);
+}
+
+.bar {
+  height: 8px;
+  background: #0b151b;
+  border: 1px solid var(--line);
+  position: relative;
+  align-self: center;
+}
+
+.bar b {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: var(--moss);
+}
+
+.bar.joy b {
+  background: var(--magenta);
+}
+
+.bar.energy b {
+  background: var(--sun);
+}
+
+.wildStage {
+  color: var(--cream);
+  font-size: 13px;
+  margin: 0 0 6px;
+  min-height: 18px;
+}
+
+.wildRow {
+  display: grid;
+  grid-template-columns: 62px 1fr 1fr;
+  gap: 4px 8px;
+  font-size: 12px;
+  color: var(--dim);
+  align-items: center;
+  margin: 2px 0;
+}
+
+.wildRow .bar b {
+  transition: width 0.4s;
+}
+
+.wildNote {
+  grid-column: 2 / 4;
+}
+
+.ok {
+  color: var(--moss);
+}
+
+.bad {
+  color: var(--magenta);
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  font-size: 12px;
+  color: var(--dim);
+}
+
+.legend div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend canvas {
+  image-rendering: pixelated;
+  width: 60px;
+  height: 48px;
+  flex: none;
+  border: 1px solid var(--line);
+}
+
+.root input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: #0b151b;
+  border: 1px solid var(--line);
+  outline: none;
+  margin: 0;
+}
+
+.root input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 16px;
+  background: var(--sun);
+  border: 2px solid var(--night);
+  cursor: pointer;
+}
+
+.root input[type="range"]:focus-visible {
+  outline: 2px solid var(--cyan);
+}
+
+.root button {
+  font: inherit;
+  font-size: 14px;
+  color: var(--cream);
+  background: var(--panel2);
+  border: 2px solid var(--line);
+  padding: 5px 9px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 #0a161c;
+}
+
+.root button:hover {
+  border-color: var(--cyan);
+}
+
+.root button:focus-visible {
+  outline: 2px solid var(--cyan);
+}
+
+.root button.on {
+  background: var(--sun);
+  color: var(--night);
+  border-color: var(--sun);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root * {
+    transition: none !important;
+  }
+}

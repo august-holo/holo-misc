@@ -1,0 +1,10 @@
+.DS_Store
+
+# rust
+/api/target
+
+# terraform (state lives in S3)
+.terraform/
+*.tfstate
+*.tfstate.*
+tfplan
