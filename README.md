@@ -36,13 +36,15 @@ scripts/deploy-web.sh
 Terraform is applied locally, never from CI. State is in S3.
 
 ```sh
-cd infra
-terraform init
-terraform apply
+scripts/bootstrap-state.sh                   # once: the S3 bucket for Terraform state
+cd infra && terraform init -backend-config=backend.hcl && terraform apply
 ```
 
-Terraform writes `.github/deploy.env` and `web/.env`. They hold identifiers, not secrets,
-and are committed so CI needs no configuration in GitHub.
+Terraform writes `.github/deploy.env` and `web/.env` for this machine; neither is committed.
+CI reads the same names from the repository's Actions variables (Settings → Secrets and
+variables → Actions → Variables): `AWS_REGION`, `DEPLOY_ROLE_ARN`, `SITE_BUCKET`,
+`ARTIFACTS_BUCKET`, `DISTRIBUTION_ID`, `INSTANCE_ID`, `DEPLOY_DOCUMENT`, and the three
+`NEXT_PUBLIC_COGNITO_*` values. Copy them from the two generated files after `terraform apply`.
 
 ## Users
 
